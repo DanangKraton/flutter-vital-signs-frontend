@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:vital_signs_frontend/pages/bth_scan.dart';
 import 'package:vital_signs_frontend/pages/home_page.dart';
 import 'package:vital_signs_frontend/theme.dart';
 
@@ -50,6 +51,80 @@ class bth_before_scan extends StatelessWidget {
                   height: 40,
                 )
               ],
+            ),
+            const SizedBox(
+              height: 59,
+            ),
+            Container(
+              width: 350,
+              height: 350,
+              decoration: BoxDecoration(
+                  color: back_grey_col,
+                  shape: BoxShape.circle,
+                  image: DecorationImage(
+                      image: AssetImage('assets/images/bluetooth_pic.png'),
+                      scale: 2.5)),
+              // child: Image,
+            ),
+            const SizedBox(
+              height: 15,
+            ),
+            Container(
+              width: 350,
+              height: 50,
+              padding: EdgeInsets.all(10),
+              decoration: BoxDecoration(
+                  color: light_blue_col,
+                  borderRadius: BorderRadius.circular(10)),
+              child: Text(
+                '1. Turn on bluetooth on this device',
+                textAlign: TextAlign.center,
+                style:
+                    white_text_sty.copyWith(fontSize: 20, fontWeight: regular),
+              ),
+            ),
+            const SizedBox(
+              height: 15,
+            ),
+            Container(
+              width: 350,
+              height: 50,
+              padding: EdgeInsets.all(10),
+              decoration: BoxDecoration(
+                  color: light_blue_col,
+                  borderRadius: BorderRadius.circular(10)),
+              child: Text(
+                '2. Turn on the smart watch',
+                textAlign: TextAlign.center,
+                style:
+                    white_text_sty.copyWith(fontSize: 20, fontWeight: regular),
+              ),
+            ),
+            const SizedBox(
+              height: 90,
+            ),
+            Container(
+              width: 300,
+              height: 50,
+              child: TextButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const bth_scan(),
+                    ),
+                  );
+                },
+                style: TextButton.styleFrom(
+                    backgroundColor: dark_blue_col,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15))),
+                child: Text(
+                  'Search for Devices',
+                  style: white_text_sty.copyWith(
+                      fontSize: 30, fontWeight: regular),
+                ),
+              ),
             ),
           ],
         ),
