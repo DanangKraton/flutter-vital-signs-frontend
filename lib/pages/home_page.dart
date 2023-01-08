@@ -1,9 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:vital_signs_frontend/pages/bp_graph.dart';
+import 'package:vital_signs_frontend/pages/bth_before_scan.dart';
+import 'package:vital_signs_frontend/pages/heart_graph.dart';
+import 'package:vital_signs_frontend/pages/oksi_graph.dart';
+import 'package:vital_signs_frontend/pages/temp_graph.dart';
 import 'package:vital_signs_frontend/theme.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  String bp_data = '--/--';
+  String heart_data = '--';
+  String oksi_data = '--';
+  String temp_data = '--';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,117 +55,137 @@ class HomePage extends StatelessWidget {
                   ),
                   Row(
                     children: [
-                      Container(
-                        margin: EdgeInsets.only(left: 30),
-                        padding: EdgeInsets.only(
-                            top: 10, left: 30, right: 30, bottom: 20),
-                        width: 170,
-                        height: 170,
-                        decoration: BoxDecoration(
-                          color: white_col,
-                          borderRadius: BorderRadius.circular(10),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(0.4),
-                              spreadRadius: 5,
-                              blurRadius: 5,
+                      GestureDetector(
+                        onTap: (() {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const bp_graph(),
                             ),
-                          ],
-                        ),
-                        child: Column(children: [
-                          Container(
-                            width: 40,
-                            height: 40,
-                            decoration: BoxDecoration(
-                                image: DecorationImage(
-                                    image: AssetImage(
-                                        'assets/images/bp_pic.png'))),
-                          ),
-                          SizedBox(
-                            height: 5,
-                          ),
-                          Text(
-                            'Blood Pressure',
-                            style: dark_blue_text_sty.copyWith(
-                                fontSize: 20, fontWeight: medium),
-                          ),
-                          // SizedBox(
-                          //   height: 1,
-                          // ),
-                          Text(
-                            'N/A',
-                            style: red_text_sty.copyWith(
-                                fontSize: 40, fontWeight: regular),
-                          ),
-                          const Spacer(),
-                          Row(
-                            children: [
-                              const Spacer(),
-                              Text(
-                                'mmhg',
-                                style: red_text_sty.copyWith(
-                                    fontSize: 16, fontWeight: regular),
+                          );
+                        }),
+                        child: Container(
+                          margin: EdgeInsets.only(left: 30),
+                          padding: EdgeInsets.only(
+                              top: 10, left: 30, right: 30, bottom: 20),
+                          width: 170,
+                          height: 170,
+                          decoration: BoxDecoration(
+                            color: white_col,
+                            borderRadius: BorderRadius.circular(10),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey.withOpacity(0.4),
+                                spreadRadius: 5,
+                                blurRadius: 5,
                               ),
                             ],
-                          )
-                        ]),
+                          ),
+                          child: Column(children: [
+                            Container(
+                              width: 40,
+                              height: 40,
+                              decoration: BoxDecoration(
+                                  image: DecorationImage(
+                                      image: AssetImage(
+                                          'assets/images/bp_pic.png'))),
+                            ),
+                            SizedBox(
+                              height: 5,
+                            ),
+                            Text(
+                              'Blood Pressure',
+                              style: dark_blue_text_sty.copyWith(
+                                  fontSize: 20, fontWeight: medium),
+                            ),
+                            // SizedBox(
+                            //   height: 1,
+                            // ),
+                            Text(
+                              '$bp_data',
+                              style: red_text_sty.copyWith(
+                                  fontSize: 40, fontWeight: regular),
+                            ),
+                            const Spacer(),
+                            Row(
+                              children: [
+                                const Spacer(),
+                                Text(
+                                  'mmhg',
+                                  style: red_text_sty.copyWith(
+                                      fontSize: 16, fontWeight: regular),
+                                ),
+                              ],
+                            )
+                          ]),
+                        ),
                       ),
                       const Spacer(),
-                      Container(
-                        margin: EdgeInsets.only(right: 30),
-                        padding: EdgeInsets.only(
-                            top: 10, left: 30, right: 30, bottom: 20),
-                        width: 170,
-                        height: 170,
-                        decoration: BoxDecoration(
-                          color: white_col,
-                          borderRadius: BorderRadius.circular(10),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(0.4),
-                              spreadRadius: 5,
-                              blurRadius: 5,
+                      GestureDetector(
+                        onTap: (() {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const heart_graph(),
                             ),
-                          ],
-                        ),
-                        child: Column(children: [
-                          Container(
-                            width: 40,
-                            height: 40,
-                            decoration: BoxDecoration(
-                                image: DecorationImage(
-                                    image: AssetImage(
-                                        'assets/images/heart_pic.png'))),
-                          ),
-                          SizedBox(
-                            height: 5,
-                          ),
-                          Text(
-                            'Heart Rate',
-                            style: dark_blue_text_sty.copyWith(
-                                fontSize: 20, fontWeight: medium),
-                          ),
-                          // SizedBox(
-                          //   height: 1,
-                          // ),
-                          Text(
-                            'N/A',
-                            style: yellow_text_sty.copyWith(
-                                fontSize: 40, fontWeight: regular),
-                          ),
-                          const Spacer(),
-                          Row(
-                            children: [
-                              const Spacer(),
-                              Text(
-                                'mmhg',
-                                style: yellow_text_sty.copyWith(
-                                    fontSize: 16, fontWeight: regular),
+                          );
+                        }),
+                        child: Container(
+                          margin: EdgeInsets.only(right: 30),
+                          padding: EdgeInsets.only(
+                              top: 10, left: 30, right: 30, bottom: 20),
+                          width: 170,
+                          height: 170,
+                          decoration: BoxDecoration(
+                            color: white_col,
+                            borderRadius: BorderRadius.circular(10),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey.withOpacity(0.4),
+                                spreadRadius: 5,
+                                blurRadius: 5,
                               ),
                             ],
-                          )
-                        ]),
-                      ),
+                          ),
+                          child: Column(children: [
+                            Container(
+                              width: 40,
+                              height: 40,
+                              decoration: BoxDecoration(
+                                  image: DecorationImage(
+                                      image: AssetImage(
+                                          'assets/images/heart_pic.png'))),
+                            ),
+                            SizedBox(
+                              height: 5,
+                            ),
+                            Text(
+                              'Heart Rate',
+                              style: dark_blue_text_sty.copyWith(
+                                  fontSize: 20, fontWeight: medium),
+                            ),
+                            // SizedBox(
+                            //   height: 1,
+                            // ),
+                            Text(
+                              '$heart_data',
+                              style: yellow_text_sty.copyWith(
+                                  fontSize: 40, fontWeight: regular),
+                            ),
+                            const Spacer(),
+                            Row(
+                              children: [
+                                const Spacer(),
+                                Text(
+                                  'mmhg',
+                                  style: yellow_text_sty.copyWith(
+                                      fontSize: 16, fontWeight: regular),
+                                ),
+                              ],
+                            )
+                          ]),
+                        ),
+                      )
                     ],
                   ),
                   const SizedBox(
@@ -159,114 +193,134 @@ class HomePage extends StatelessWidget {
                   ),
                   Row(
                     children: [
-                      Container(
-                        margin: EdgeInsets.only(left: 30),
-                        padding: EdgeInsets.only(
-                            top: 10, left: 30, right: 30, bottom: 20),
-                        width: 170,
-                        height: 170,
-                        decoration: BoxDecoration(
-                          color: white_col,
-                          borderRadius: BorderRadius.circular(10),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(0.4),
-                              spreadRadius: 5,
-                              blurRadius: 5,
+                      GestureDetector(
+                        onTap: (() {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const oksi_graph(),
                             ),
-                          ],
-                        ),
-                        child: Column(children: [
-                          Container(
-                            width: 40,
-                            height: 40,
-                            decoration: BoxDecoration(
-                                image: DecorationImage(
-                                    image: AssetImage(
-                                        'assets/images/oksi_pic.png'))),
-                          ),
-                          SizedBox(
-                            height: 5,
-                          ),
-                          Text(
-                            'Blood Oxygen',
-                            style: dark_blue_text_sty.copyWith(
-                                fontSize: 20, fontWeight: medium),
-                          ),
-                          Text(
-                            'N/A',
-                            style: green_text_sty.copyWith(
-                                fontSize: 40, fontWeight: regular),
-                          ),
-                          const Spacer(),
-                          Row(
-                            children: [
-                              const Spacer(),
-                              Text(
-                                '%',
-                                style: green_text_sty.copyWith(
-                                    fontSize: 16, fontWeight: regular),
+                          );
+                        }),
+                        child: Container(
+                          margin: EdgeInsets.only(left: 30),
+                          padding: EdgeInsets.only(
+                              top: 10, left: 30, right: 30, bottom: 20),
+                          width: 170,
+                          height: 170,
+                          decoration: BoxDecoration(
+                            color: white_col,
+                            borderRadius: BorderRadius.circular(10),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey.withOpacity(0.4),
+                                spreadRadius: 5,
+                                blurRadius: 5,
                               ),
                             ],
-                          )
-                        ]),
+                          ),
+                          child: Column(children: [
+                            Container(
+                              width: 40,
+                              height: 40,
+                              decoration: BoxDecoration(
+                                  image: DecorationImage(
+                                      image: AssetImage(
+                                          'assets/images/oksi_pic.png'))),
+                            ),
+                            SizedBox(
+                              height: 5,
+                            ),
+                            Text(
+                              'Blood Oxygen',
+                              style: dark_blue_text_sty.copyWith(
+                                  fontSize: 20, fontWeight: medium),
+                            ),
+                            Text(
+                              '$oksi_data',
+                              style: green_text_sty.copyWith(
+                                  fontSize: 40, fontWeight: regular),
+                            ),
+                            const Spacer(),
+                            Row(
+                              children: [
+                                const Spacer(),
+                                Text(
+                                  '%',
+                                  style: green_text_sty.copyWith(
+                                      fontSize: 16, fontWeight: regular),
+                                ),
+                              ],
+                            )
+                          ]),
+                        ),
                       ),
                       const Spacer(),
-                      Container(
-                        margin: EdgeInsets.only(right: 30),
-                        padding: EdgeInsets.only(
-                            top: 10, left: 30, right: 30, bottom: 20),
-                        width: 170,
-                        height: 170,
-                        decoration: BoxDecoration(
-                          color: white_col,
-                          borderRadius: BorderRadius.circular(10),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(0.4),
-                              spreadRadius: 5,
-                              blurRadius: 5,
+                      GestureDetector(
+                        onTap: (() {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const temp_graph(),
                             ),
-                          ],
-                        ),
-                        child: Column(children: [
-                          Container(
-                            width: 40,
-                            height: 40,
-                            decoration: BoxDecoration(
-                                image: DecorationImage(
-                                    image: AssetImage(
-                                        'assets/images/temp_pic.png'))),
-                          ),
-                          SizedBox(
-                            height: 5,
-                          ),
-                          Text(
-                            'Temperature',
-                            style: dark_blue_text_sty.copyWith(
-                                fontSize: 20, fontWeight: medium),
-                          ),
-                          // SizedBox(
-                          //   height: 1,
-                          // ),
-                          Text(
-                            'N/A',
-                            style: light_blue_text_sty.copyWith(
-                                fontSize: 40, fontWeight: regular),
-                          ),
-                          const Spacer(),
-                          Row(
-                            children: [
-                              const Spacer(),
-                              Text(
-                                'Celcius',
-                                style: light_blue_text_sty.copyWith(
-                                    fontSize: 16, fontWeight: regular),
+                          );
+                        }),
+                        child: Container(
+                          margin: EdgeInsets.only(right: 30),
+                          padding: EdgeInsets.only(
+                              top: 10, left: 30, right: 30, bottom: 20),
+                          width: 170,
+                          height: 170,
+                          decoration: BoxDecoration(
+                            color: white_col,
+                            borderRadius: BorderRadius.circular(10),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey.withOpacity(0.4),
+                                spreadRadius: 5,
+                                blurRadius: 5,
                               ),
                             ],
-                          )
-                        ]),
-                      ),
+                          ),
+                          child: Column(children: [
+                            Container(
+                              width: 40,
+                              height: 40,
+                              decoration: BoxDecoration(
+                                  image: DecorationImage(
+                                      image: AssetImage(
+                                          'assets/images/temp_pic.png'))),
+                            ),
+                            SizedBox(
+                              height: 5,
+                            ),
+                            Text(
+                              'Temperature',
+                              style: dark_blue_text_sty.copyWith(
+                                  fontSize: 20, fontWeight: medium),
+                            ),
+                            // SizedBox(
+                            //   height: 1,
+                            // ),
+                            Text(
+                              '$temp_data',
+                              style: light_blue_text_sty.copyWith(
+                                  fontSize: 40, fontWeight: regular),
+                            ),
+                            const Spacer(),
+                            Row(
+                              children: [
+                                const Spacer(),
+                                Text(
+                                  'Celcius',
+                                  style: light_blue_text_sty.copyWith(
+                                      fontSize: 16, fontWeight: regular),
+                                ),
+                              ],
+                            )
+                          ]),
+                        ),
+                      )
                     ],
                   ),
                   const SizedBox(
@@ -276,7 +330,14 @@ class HomePage extends StatelessWidget {
                     width: 200,
                     height: 50,
                     child: TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const bth_before_scan(),
+                          ),
+                        );
+                      },
                       style: TextButton.styleFrom(
                           backgroundColor: dark_blue_col,
                           shape: RoundedRectangleBorder(
