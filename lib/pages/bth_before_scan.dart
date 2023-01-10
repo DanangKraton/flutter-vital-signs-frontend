@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:vital_signs_frontend/pages/bth_scan.dart';
 import 'package:vital_signs_frontend/pages/home_page.dart';
+import 'package:vital_signs_frontend/pages/try.dart';
 import 'package:vital_signs_frontend/theme.dart';
 
 class bth_before_scan extends StatelessWidget {

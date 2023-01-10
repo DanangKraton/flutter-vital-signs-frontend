@@ -177,7 +177,7 @@ class _HomePageState extends State<HomePage> {
                               children: [
                                 const Spacer(),
                                 Text(
-                                  'mmhg',
+                                  'bpm',
                                   style: yellow_text_sty.copyWith(
                                       fontSize: 16, fontWeight: regular),
                                 ),
