@@ -1,8 +1,20 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.vital_signs_frontend">
-    <uses-permission android:name="android.permission.BLUETOOTH" />  
-	<uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />  
-	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <!-- <uses-permission android:name="android.permission.BLUETOOTH" />  
+	<uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />   -->
+	<!-- <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/> -->
+
+    <uses-permission android:name="android.permission.BLUETOOTH"
+                     android:maxSdkVersion="30" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"
+                     android:maxSdkVersion="30" />
+    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
+    <!-- <uses-permission android:name="android.permission.BLUETOOTH_SCAN" /> -->
+    <uses-permission android:name="android.permission.BLUETOOTH_ADVERTISE" />
+    <uses-permission android:name="android.permission.BLUETOOTH_SCAN"
+                     android:usesPermissionFlags="neverForLocation" />
+    <uses-feature android:name="android.hardware.bluetooth_le" android:required="true"/>
+    <!-- <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/> -->
    <application
         android:label="vital_signs_frontend"
         android:name="${applicationName}"
